@@ -12,7 +12,7 @@ It will print:
 * the time in s if the function took more than a second, with two decimal digits.
 
 ```rust
-# use crate::time_this::time_this;
+use time_this::time_this;
 
 #[time_this]
 fn add(a: u32, b: u32) -> u32 {
@@ -32,7 +32,7 @@ result of the expression, similar to `dbg!()`. It may not work correctly with `a
 Instead of printing the function name, it will print the file/line the expression that was timed at.
 
 ```rust
-# use crate::time_this::time;
+use time_this::time;
 
 fn add(a: u32, b: u32) -> u32 {
     a + b

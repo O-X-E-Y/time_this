@@ -6,8 +6,8 @@ use quote::{quote};
 use syn::{parse_macro_input, Expr, ItemFn};
 
 /// this macro can be used to time any function you want using `std::time::Instant`. It may not work
-/// correctly with `async fn` and it definitely doesn't work with `const fn` (even if called in a non-const
-/// context. You can write a small wrapping fn if you need to time a `const fn`).
+/// correctly with `async fn` and it definitely doesn't work with `const fn`, even if called in a non-const
+/// context. If needed, you can write a small wrapping fn if you need to time a `const fn`.
 /// It will print:
 /// * the time in ns if the function took less than 1μs.
 /// * the time in μs if the function took less than 1ms.

@@ -1,0 +1,22 @@
+[package]
+name = "time_this"
+version = "0.1.0"
+edition = "2021"
+authors = ["Oxey"]
+description = "two macros to quickly time functions for debugging purposes"
+license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/O-X-E-Y/time_this"
+documentation = "https://docs.rs/time_this"
+
+[lib]
+proc-macro = true
+
+[[test]]
+name = "tests"
+path = "tests/tests.rs"
+
+[dependencies]
+proc-macro2 = "1.0.52"
+quote = "1.0.26"
+syn = { version = "2.0.4", features = ["full"] }

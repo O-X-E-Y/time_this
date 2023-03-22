@@ -1,0 +1,1 @@
+A proc macro and a macro attribute to quickly time funcitions. Uses `std::time::Duration` so relies on std to work. 

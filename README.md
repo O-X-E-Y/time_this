@@ -2,9 +2,10 @@ A proc macro and a macro attribute to quickly time functions. Uses `std::time::I
 
 ### \#\[time_this\]
 
-This macro can be used to time any function you want using `std::time::Instant`. It may not work
-correctly with `async fn` and it definitely doesn't work with `const fn`, even if called in a non-const
-context. If needed, you can write a small wrapping fn if you need to time a `const fn`.
+This macro can be used to time any function you want using `std::time::Instant`. Whenever the function
+gets called, its timing information will be passed to stdout. It may not work correctly with `async fn`
+and it definitely doesn't work with `const fn`, even if called in a non-const context. If needed, you
+can write a small wrapping function if you need to time a `const fn`.
 It will print:
 * the time in ns if the function took less than 1μs.
 * the time in μs if the function took less than 1ms.
@@ -27,9 +28,9 @@ fn main() {
 
 ### time!()
 
-This macro can be used to time any expression you want using `std::time::Instant`. It returns the
-result of the expression, similar to `dbg!()`. It may not work correctly with `async fn`.
-Instead of printing the function name, it will print the file/line the expression that was timed at.
+This macro can be used to time any expression you want using `std::time::Instant`. After the expression
+evaluates, timing information will immediately be passed to stdout.It returns the result of the expression, similar to `dbg!()`. It may not work correctly with `async fn`. Instead of printing the function name, it
+will print the file/line the expression that was timed at.
 
 ```rust
 use time_this::time;

@@ -23,6 +23,11 @@ use syn::{parse_macro_input, Expr, ItemFn};
 /// fn add(a: u32, b: u32) -> u32 {
 ///     a + b
 /// }
+/// 
+/// fn main() {
+/// let result = add(3, 5);
+/// // prints the time it took the body of `add` to execute!
+/// }
 /// ```
 /// 
 /// Though it doesn't work on `const fn`:

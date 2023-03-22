@@ -7,7 +7,7 @@ use time_this::{time_this, time};
 pub fn try_compile() {}
 
 #[time_this]
-fn compile_with_params(a: usize, b: usize) -> usize {
+fn add_for_compile(a: usize, b: usize) -> usize {
     a + b
 }
 
@@ -21,7 +21,7 @@ fn recursive(n: u64) -> u64 {
     }
 }
 
-fn for_timing(a: usize, b: usize) -> usize {
+fn add_for_time(a: usize, b: usize) -> usize {
     a + b
 }
 
@@ -29,6 +29,6 @@ fn for_timing(a: usize, b: usize) -> usize {
 fn test() {
     recursive(5);
 
-    assert_eq!(time!(for_timing(3, 5)), for_timing(3, 5));
-    assert_eq!(for_timing(3, 5), 8);
+    assert_eq!(time!(add_for_time(3, 5)), add_for_time(3, 5));
+    assert_eq!(add_for_time(3, 5), 8);
 }

@@ -15,28 +15,28 @@ use syn::{parse_macro_input, Expr, ItemFn};
 /// * the time in μs if the function took less than 1ms.
 /// * the time in ms if the function took longer than 1ms, but less than 1s.
 /// * the time in s if the function took more than a second, with two decimal digits.
-/// 
+///
 /// # Examples
-/// 
+///
 /// ```
 /// # use crate::time_this::time_this;
-/// 
+///
 /// #[time_this]
 /// fn add(a: u32, b: u32) -> u32 {
 ///     a + b
 /// }
-/// 
+///
 /// fn main() {
 ///     let result = add(3, 5);
 ///     // function 'add()' took 56ns
 /// }
 /// ```
-/// 
+///
 /// Though it doesn't work on `const fn`:
-/// 
+///
 /// ```compile_fail
 /// # use crate::time_this::time_this;
-/// 
+///
 /// #[time_this]
 /// const fn const_fn(items: &[usize]) -> usize {
 ///     0
@@ -101,16 +101,16 @@ pub fn time_this(_args: TokenStream, input: TokenStream) -> TokenStream {
 /// * the time in μs if the function took less than 1ms.
 /// * the time in ms if the function took longer than 1ms, but less than 1s.
 /// * the time in s if the function took longer than a second, with two decimal digits.
-/// 
+///
 /// # Examples
-/// 
+///
 /// ```
 /// # use crate::time_this::time;
-/// 
+///
 /// fn add(a: u32, b: u32) -> u32 {
 ///     a + b
 /// }
-/// 
+///
 /// fn main() {
 ///     let result = time!(add(3, 5));
 ///     // [tests/tests.rs:32] add(3, 5) took 59ns

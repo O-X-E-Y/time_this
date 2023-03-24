@@ -1,7 +1,7 @@
 #![feature(stmt_expr_attributes)]
 #![feature(proc_macro_hygiene)]
 
-use time_this::{time_this, time};
+use time_this::{time, time_this};
 
 #[time_this]
 pub fn try_compile() {}
@@ -17,7 +17,7 @@ fn recursive(n: u64) -> u64 {
     match n {
         0 => 1,
         1 => 1,
-        n => recursive(n-1) + recursive(n-2),
+        n => recursive(n - 1) + recursive(n - 2),
     }
 }
 

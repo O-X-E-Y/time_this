@@ -27,7 +27,7 @@ fn add_for_time(a: usize, b: usize) -> usize {
 
 #[test]
 fn test() {
-    recursive(5);
+    dbg!(recursive(5));
 
     assert_eq!(time!(add_for_time(3, 5)), add_for_time(3, 5));
     assert_eq!(add_for_time(3, 5), 8);

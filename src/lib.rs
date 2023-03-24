@@ -2,7 +2,7 @@
 #![feature(proc_macro_hygiene)]
 
 use proc_macro::TokenStream;
-use quote::{quote};
+use quote::quote;
 use syn::{parse_macro_input, Expr, ItemFn};
 
 /// This macro can be used to time any function you want using `std::time::Instant`. Whenever the function
@@ -114,11 +114,11 @@ pub fn time_this(_args: TokenStream, input: TokenStream) -> TokenStream {
 /// ```
 #[proc_macro]
 pub fn time(input: TokenStream) -> TokenStream {
-    let input_clone = input.clone();
-    let expr = parse_macro_input!(input_clone as Expr);
+    let __token_disp = format!("{}", input);
+    let expr = parse_macro_input!(input as Expr);
 
     quote! {{
-        let __str_expr = format!("[{}:{}]", file!(), line!());
+        let __str_expr = format!("[{}:{}] {}", file!(), line!(), #__token_disp);
 
         let __start_time = ::std::time::Instant::now();
         let res = #expr;
@@ -126,16 +126,16 @@ pub fn time(input: TokenStream) -> TokenStream {
         let __elapsed_time = __start_time.elapsed();
 
         let __elapsed_msg = if __elapsed_time.checked_sub(::std::time::Duration::from_micros(1)).is_none() {
-            format!("expression at {} took {}ns", __str_expr, __elapsed_time.as_nanos())
+            format!("{} took {}ns", __str_expr, __elapsed_time.as_nanos())
 
         } else if __elapsed_time.checked_sub(::std::time::Duration::from_millis(1)).is_none() {
-            format!("expression at {} took {}μs", __str_expr, __elapsed_time.as_micros())
+            format!("{} took {}μs", __str_expr, __elapsed_time.as_micros())
 
         } else if __elapsed_time.checked_sub(::std::time::Duration::from_millis(1000)).is_none() {
-            format!("expression at {} took {}ms", __str_expr, __elapsed_time.as_millis())
+            format!("{} took {}ms", __str_expr, __elapsed_time.as_millis())
 
         } else {
-            format!("expression at {} took {:.2}s", __str_expr, __elapsed_time.as_secs_f64())
+            format!("{} took {:.2}s", __str_expr, __elapsed_time.as_secs_f64())
         };
 
         println!("{}", __elapsed_msg);

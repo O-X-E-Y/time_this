@@ -1,6 +1,6 @@
 [package]
 name = "time_this"
-version = "0.2.4"
+version = "0.2.5"
 edition = "2021"
 authors = ["Oxey"]
 description = "two macros to quickly time functions for debugging purposes"

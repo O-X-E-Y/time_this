@@ -1,6 +1,3 @@
-#![feature(stmt_expr_attributes)]
-#![feature(proc_macro_hygiene)]
-
 use time_this::{time, time_this};
 
 #[time_this]

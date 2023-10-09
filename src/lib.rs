@@ -1,6 +1,3 @@
-#![feature(stmt_expr_attributes)]
-#![feature(proc_macro_hygiene)]
-
 use proc_macro::TokenStream;
 use quote::quote;
 use syn::{parse_macro_input, Expr, ItemFn};
